@@ -1,0 +1,754 @@
+usage: __main__.py ep
+       [-h]
+       [--supercell SUPERCELL]
+       [--params-fd PARAMS_FD]
+       [--symmetry-tol SYMMETRY_TOL]
+       [--laser-broadening LASER_BROADENING]
+       [--phonon-broadening PHONON_BROADENING]
+       [--polarizations POLARIZATIONS]
+       [--no-displacement-symmetry]
+       [--write-mode-intensities]
+       [--write-mode-amplitudes]
+       [--write-spectrum-plots]
+       [--write-contributions]
+       [--shift-type {stokes,anti-stokes}]
+       [--particles PARTICLES]
+       [--permutations {original,default,fast,none}]
+       [--no-permutations]
+       [--kpoint-symmetry-bug]
+       [--kpoint-symmetry-form {badconj,conj,mult}]
+       [--laser-freqs LASER_FREQS]
+       [--shift-step SHIFT_STEP]
+       [--disp-split IDX,MOD]
+       INPUT
+
+positional arguments:
+  INPUT
+    .gpw file
+    for
+    unitcell,
+    with
+    structure
+    and
+    relevant
+    parameters
+
+optional arguments:
+  -h, --help
+    show this
+    help
+    message and
+    exit
+  --supercell SUPERCELL
+    space-
+    separated
+    list of 3
+    integers
+    with number
+    of repeats
+    along each
+    cell vector
+  --params-fd PARAMS_FD
+    json file
+    with GPAW
+    params to
+    modify for
+    finite disp
+    lacement
+    (supercell)
+  --symmetry-tol SYMMETRY_TOL
+    Symmetry
+    tolerance
+    for
+    phonopy.
+    This needs
+    to be
+    provided on
+    every run,
+    even after 
+    displacemen
+    ts are done
+  --disp-split IDX,MOD
+    Only
+    compute dis
+    placements
+    with index
+    IDX modulo
+    MOD. If
+    provided,
+    this
+    process
+    will stop
+    after displ
+    acements.
+    Use --disp-
+    split=stop
+    to run the
+    script up
+    to the
+    point JUST
+    BEFORE
+    doing displ
+    acements.
+    (it is
+    recommended
+    to do one
+    run with
+    --disp-
+    split=stop
+    before
+    starting
+    multiple
+    --disp-
+    split runs,
+    to avoid
+    race condit
+    ions.)
+
+Raman Arguments:
+  These
+  arguments
+  only
+  affect
+  the final
+  raman com
+  putation
+  and do
+  not need
+  to be
+  provided
+  when
+  using
+  --disp-
+  split.
+
+  --laser-broadening LASER_BROADENING
+    broadening
+    in eV
+    (imaginary
+    part added
+    to light
+    freqencies)
+  --phonon-broadening PHONON_BROADENING
+    phonon
+    gaussian
+    variance in
+    cm-1
+  --polarizations POLARIZATIONS
+    comma-
+    separated
+    list of
+    raman polar
+    izations to
+    do (e.g.
+    xx,xy,xz)
+  --no-displacement-symmetry
+    explicitly
+    compute
+    data at all
+    6N
+    cartesian d
+    isplacement
+    s, rather
+    than using
+    symmetry.
+  --write-mode-intensities
+    deprecated
+    alias for
+    --write-
+    mode-
+    amplitudes.
+  --write-mode-amplitudes
+    write mode
+    amplitudes
+    to files.
+    For --permu
+    tations=ori
+    ginal,
+    these will
+    contain a
+    second axis
+    for the
+    raman
+    shift.
+    (this
+    dependence
+    arises from
+    the form of
+    the matrix
+    elements,
+    and does
+    not account
+    for
+    broadening)
+  --write-spectrum-plots
+    write raman
+    plots
+  --write-contributions
+    write
+    individual
+    electronic
+    state raman
+    contributio
+    ns to a NPZ
+    file
+  --shift-type {stokes,anti-stokes}
+    selects
+    sign of the
+    phonon
+    frequency
+    in the
+    energy cons
+    ervation
+    equation.
+    IMPORTANT:
+    results of
+    --shift-
+    type 'anti-
+    stokes' are
+    not
+    physical as
+    they do not
+    account for
+    the
+    occupation
+    of the
+    phonon
+    states
+    (there is
+    no
+    temperature
+    dependence)
+    . Currently
+    the purpose
+    of this
+    flag is to
+    demonstrate
+    a relation
+    between
+    this sign
+    factor and
+    differences
+    between
+    off-
+    diagonal
+    raman
+    tensor
+    elements.
+    (stokes XY
+    is similar
+    to anti-
+    stokes YX,
+    and etc.)
+  --particles PARTICLES
+    Specify
+    which
+    particle
+    can
+    transition
+    during the
+    second
+    event. 'e'
+    for
+    electron,
+    'h' for
+    hole, 'eh'
+    (the
+    default)
+    for both.
+  --permutations {original,default,fast,none}
+    controls
+    inclusion
+    of
+    nonresonant
+    raman terms
+    in the
+    raman
+    spectral
+    intensity
+    (i.e. event
+    orderings
+    other than
+    light
+    absorption,
+    phonon
+    emission,
+    light
+    emission).
+    '--permutat
+    ions=defaul
+    t' will
+    include all
+    six
+    orderings.
+    '--permutat
+    ions=none'
+    only
+    includes
+    the
+    resonant
+    ordering. '
+    --permutati
+    ons=fast'
+    is
+    equivalent
+    to --permut
+    ations=defa
+    ult. '--per
+    mutations=o
+    riginal'
+    faithfully
+    replicates
+    Ulrik
+    Leffer's
+    original
+    code; it
+    includes
+    all
+    nonresonant
+    terms but
+    is SIGNIFIC
+    ANTLY
+    slower than
+    the default
+    setting as
+    it
+    expresses
+    some terms
+    as a
+    function of
+    the raman
+    shift.
+  --no-permutations
+    alias for -
+    -permutatio
+    ns=none
+  --kpoint-symmetry-bug
+    Simulate a
+    bug in old
+    versions of
+    the script
+    that did
+    not
+    correctly
+    account for
+    complex
+    conjugation
+    of matrix
+    elements
+    under time-
+    inversion
+    symmetry
+    when
+    computing
+    raman inten
+    sities.
+  --kpoint-symmetry-form {badconj,conj,mult}
+    Simulate
+    older
+    versions of
+    the script
+    that
+    handled
+    kpoint
+    symmetry di
+    fferently.
+  --laser-freqs LASER_FREQS
+    comma-
+    separated
+    list of
+    laser wavel
+    engths,
+    followed by
+    an optional
+    unit (else
+    assumed
+    nm).
+    Default: '4
+    88,532,633n
+    m'.
+    Available
+    units: nm,
+    eV
+  --shift-step SHIFT_STEP
+    step for x
+    axis of
+    raman shift
+    (cm-1)
+usage: __main__.py ep
+       [-h]
+       [--supercell SUPERCELL]
+       [--params-fd PARAMS_FD]
+       [--symmetry-tol SYMMETRY_TOL]
+       [--laser-broadening LASER_BROADENING]
+       [--phonon-broadening PHONON_BROADENING]
+       [--polarizations POLARIZATIONS]
+       [--no-displacement-symmetry]
+       [--write-mode-intensities]
+       [--write-mode-amplitudes]
+       [--write-spectrum-plots]
+       [--write-contributions]
+       [--shift-type {stokes,anti-stokes}]
+       [--particles PARTICLES]
+       [--permutations {original,default,fast,none}]
+       [--no-permutations]
+       [--kpoint-symmetry-bug]
+       [--kpoint-symmetry-form {badconj,conj,mult}]
+       [--laser-freqs LASER_FREQS]
+       [--shift-step SHIFT_STEP]
+       [--disp-split IDX,MOD]
+       INPUT
+
+positional arguments:
+  INPUT
+    .gpw file
+    for
+    unitcell,
+    with
+    structure
+    and
+    relevant
+    parameters
+
+optional arguments:
+  -h, --help
+    show this
+    help
+    message and
+    exit
+  --supercell SUPERCELL
+    space-
+    separated
+    list of 3
+    integers
+    with number
+    of repeats
+    along each
+    cell vector
+  --params-fd PARAMS_FD
+    json file
+    with GPAW
+    params to
+    modify for
+    finite disp
+    lacement
+    (supercell)
+  --symmetry-tol SYMMETRY_TOL
+    Symmetry
+    tolerance
+    for
+    phonopy.
+    This needs
+    to be
+    provided on
+    every run,
+    even after 
+    displacemen
+    ts are done
+  --disp-split IDX,MOD
+    Only
+    compute dis
+    placements
+    with index
+    IDX modulo
+    MOD. If
+    provided,
+    this
+    process
+    will stop
+    after displ
+    acements.
+    Use --disp-
+    split=stop
+    to run the
+    script up
+    to the
+    point JUST
+    BEFORE
+    doing displ
+    acements.
+    (it is
+    recommended
+    to do one
+    run with
+    --disp-
+    split=stop
+    before
+    starting
+    multiple
+    --disp-
+    split runs,
+    to avoid
+    race condit
+    ions.)
+
+Raman Arguments:
+  These
+  arguments
+  only
+  affect
+  the final
+  raman com
+  putation
+  and do
+  not need
+  to be
+  provided
+  when
+  using
+  --disp-
+  split.
+
+  --laser-broadening LASER_BROADENING
+    broadening
+    in eV
+    (imaginary
+    part added
+    to light
+    freqencies)
+  --phonon-broadening PHONON_BROADENING
+    phonon
+    gaussian
+    variance in
+    cm-1
+  --polarizations POLARIZATIONS
+    comma-
+    separated
+    list of
+    raman polar
+    izations to
+    do (e.g.
+    xx,xy,xz)
+  --no-displacement-symmetry
+    explicitly
+    compute
+    data at all
+    6N
+    cartesian d
+    isplacement
+    s, rather
+    than using
+    symmetry.
+  --write-mode-intensities
+    deprecated
+    alias for
+    --write-
+    mode-
+    amplitudes.
+  --write-mode-amplitudes
+    write mode
+    amplitudes
+    to files.
+    For --permu
+    tations=ori
+    ginal,
+    these will
+    contain a
+    second axis
+    for the
+    raman
+    shift.
+    (this
+    dependence
+    arises from
+    the form of
+    the matrix
+    elements,
+    and does
+    not account
+    for
+    broadening)
+  --write-spectrum-plots
+    write raman
+    plots
+  --write-contributions
+    write
+    individual
+    electronic
+    state raman
+    contributio
+    ns to a NPZ
+    file
+  --shift-type {stokes,anti-stokes}
+    selects
+    sign of the
+    phonon
+    frequency
+    in the
+    energy cons
+    ervation
+    equation.
+    IMPORTANT:
+    results of
+    --shift-
+    type 'anti-
+    stokes' are
+    not
+    physical as
+    they do not
+    account for
+    the
+    occupation
+    of the
+    phonon
+    states
+    (there is
+    no
+    temperature
+    dependence)
+    . Currently
+    the purpose
+    of this
+    flag is to
+    demonstrate
+    a relation
+    between
+    this sign
+    factor and
+    differences
+    between
+    off-
+    diagonal
+    raman
+    tensor
+    elements.
+    (stokes XY
+    is similar
+    to anti-
+    stokes YX,
+    and etc.)
+  --particles PARTICLES
+    Specify
+    which
+    particle
+    can
+    transition
+    during the
+    second
+    event. 'e'
+    for
+    electron,
+    'h' for
+    hole, 'eh'
+    (the
+    default)
+    for both.
+  --permutations {original,default,fast,none}
+    controls
+    inclusion
+    of
+    nonresonant
+    raman terms
+    in the
+    raman
+    spectral
+    intensity
+    (i.e. event
+    orderings
+    other than
+    light
+    absorption,
+    phonon
+    emission,
+    light
+    emission).
+    '--permutat
+    ions=defaul
+    t' will
+    include all
+    six
+    orderings.
+    '--permutat
+    ions=none'
+    only
+    includes
+    the
+    resonant
+    ordering. '
+    --permutati
+    ons=fast'
+    is
+    equivalent
+    to --permut
+    ations=defa
+    ult. '--per
+    mutations=o
+    riginal'
+    faithfully
+    replicates
+    Ulrik
+    Leffer's
+    original
+    code; it
+    includes
+    all
+    nonresonant
+    terms but
+    is SIGNIFIC
+    ANTLY
+    slower than
+    the default
+    setting as
+    it
+    expresses
+    some terms
+    as a
+    function of
+    the raman
+    shift.
+  --no-permutations
+    alias for -
+    -permutatio
+    ns=none
+  --kpoint-symmetry-bug
+    Simulate a
+    bug in old
+    versions of
+    the script
+    that did
+    not
+    correctly
+    account for
+    complex
+    conjugation
+    of matrix
+    elements
+    under time-
+    inversion
+    symmetry
+    when
+    computing
+    raman inten
+    sities.
+  --kpoint-symmetry-form {badconj,conj,mult}
+    Simulate
+    older
+    versions of
+    the script
+    that
+    handled
+    kpoint
+    symmetry di
+    fferently.
+  --laser-freqs LASER_FREQS
+    comma-
+    separated
+    list of
+    laser wavel
+    engths,
+    followed by
+    an optional
+    unit (else
+    assumed
+    nm).
+    Default: '4
+    88,532,633n
+    m'.
+    Available
+    units: nm,
+    eV
+  --shift-step SHIFT_STEP
+    step for x
+    axis of
+    raman shift
+    (cm-1)

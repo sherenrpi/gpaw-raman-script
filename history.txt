@@ -1,0 +1,180 @@
+    1  ls
+    2  cd work/
+    3  ls
+    4  sque
+    5  squeue
+    6  sinfo
+    7  cd work/
+    8  ls
+    9  cd ../
+   10  ls
+   11  exit
+   12  ls
+   13  cd work/
+   14  ls
+   15  exit
+   16  ls
+   17  cd work/
+   18  ls
+   19  pwd
+   20  cd ../
+   21  ls
+   22  pwd
+   23  cd scratch/
+   24  ls
+   25  pwd
+   26  cd ../work/
+   27  ls
+   28  squeue 
+   29  squeue -u nvs5847
+   30  ls -a
+   31  cd ../
+   32  ls -a
+   33  vi .bash_profile 
+   34  vi .bashrc 
+   35  source .bashrc 
+   36  que
+   37  ls
+   38  cd work/
+   39  ls
+   40  mkdir gpaw_install
+   41  ls
+   42  rm -r gpaw_install/
+   43  git clone https://github.com/exphp-share/gpaw-raman-script
+   44  ls
+   45  cd gpaw-raman-script/
+   46  vi environment.yml 
+   47  conda env list
+   48  ls
+   49  conda
+   50  module avail
+   51  ls
+   52  module load conda
+   53  module avail
+   54  module load anaconda3
+   55  module lits
+   56  module list
+   57  ls
+   58  vi environment.yml 
+   59  conda env create --file environment.yml
+   60  conda activate gpaw-raman-script
+   61  conda init bash
+   62  ls
+   63  cd work/gpaw-raman-script/
+   64  ls
+   65  conda activate gpaw-raman-script
+   66  echo 'print("hi")' >dummy.py
+   67  gpaw -P2 python dummy.py
+   68  ls
+   69  cd work/
+   70  ls
+   71  cond env list
+   72  conda env list
+   73  ls
+   74  cd gpaw-raman-script/
+   75  ls
+   76  vi README.md 
+   77  cd ../
+   78  ls
+   79  echo $INSTALL_HOME
+   80  ls
+   81  cd work/
+   82  ls
+   83  pwd
+   84  exit
+   85  pwd
+   86  ls
+   87  cd work/
+   88  ls
+   89  pwd
+   90  ls
+   91  tar -xf gpaw-setups-0.9.20000.tar.gz 
+   92  ls
+   93  pwd
+   94  export GPAW_SETUP_PATH=/storage/home/nvs5847/work/gpaw-setups-0.9.20000
+   95  vi ~/.bashrc 
+   96  vi ~/.bash_profile 
+   97  ls
+   98  pwd
+   99  conda env list
+  100  conda activate gpaw-raman-script
+  101  cd gpaw-raman-script/
+  102  ls
+  103  gpaw -P2 python dummy.py
+  104  echo $INSTALL_HOME
+  105  ls
+  106  cd ../
+  107  ls
+  108  pwd
+  109  gpaw install-data /storage/home/nvs5847/work/gpaw-setups-0.9.20000
+  110  ls
+  111  ls gpaw-setups-0.9.20000
+  112  echo $GPAW_SETUP_PATH
+  113  ls /storage/home/nvs5847/.conda/envs/gpaw-raman-script/
+  114  ls /storage/home/nvs5847/.conda/envs/gpaw-raman-script/share/
+  115  ls /storage/home/nvs5847/.conda/envs/gpaw-raman-script/share/gpaw/
+  116  ~/.gpaw/
+  117  ls ~/.gpaw/
+  118  vi ~/.gpaw/rc.py 
+  119  vi ~/.gpaw/
+  120  ls ~/ -a
+  121  cd
+  122  ls -a
+  123  rm -r .gpaw/
+  124  echo $GPAW_SETUP_PATH
+  125  cd /storage/home/nvs5847/.conda/envs/gpaw-raman-script/share
+  126  ls
+  127  cd gpaw/
+  128  ls
+  129  cd ../
+  130  ls
+  131  cd gpaw/
+  132  ls
+  133  rm *
+  134  ls
+  135  cd ../../
+  136  ls
+  137  cd
+  138  ls
+  139  cd work/
+  140  ls
+  141  cd gpaw-setups-0.9.20000
+  142  ls
+  143  rm -r gpaw-setups-0.9.20000/
+  144  ls
+  145  cd ../
+  146  ls
+  147  echo $INSTALL_HOME
+  148  ls
+  149  rm -r gpaw-setups-0.9.20000
+  150  ls
+  151  tar -xf gpaw-setups-0.9.20000.tar.gz 
+  152  ls
+  153  ls gpaw-setups-0.9.20000
+  154  ls
+  155  ls ~/
+  156  ls ~/.conda/envs/gpaw-raman-script/share/gpaw/
+  157  echo $GPAW_SETUP_PATH
+  158  ls
+  159  cd gpaw-
+  160  cd gpaw-setups-0.9.20000
+  161  ls
+  162  cp * $GPAW_SETUP_PATH/
+  163  ls $GPAW_SETUP_PATH/
+  164  ls
+  165  conda deactivate
+  166  conda env list
+  167  conda activate gpaw-raman-script
+  168  echo $GPAW_SETUP_PATH
+  169  ls
+  170  cd ../
+  171  ls
+  172  echo $GPAW_SETUP_PATH
+  173  gpaw install-data /storage/home/nvs5847/.conda/envs/gpaw-raman-script/share/gpaw/datasets
+  174  ls /storage/home/nvs5847/.conda/envs/gpaw-raman-script/share/gpaw
+  175  ls
+  176  cd gpaw-
+  177  cd gpaw-raman-script/
+  178  ls
+  179  histoty >>history.txt
+  180  history >>history.txt
