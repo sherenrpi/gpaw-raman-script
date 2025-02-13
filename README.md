@@ -1,3 +1,6 @@
+## A modified version of the original resonant Raman script by Michael Lamparski (see link below). 
+## This version includes functionality to save the calculated force constants for later post-processing.
+
 # gpaw-raman-script
 
 Implements https://www.nature.com/articles/s41467-020-16529-6
