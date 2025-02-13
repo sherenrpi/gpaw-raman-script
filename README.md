@@ -1,5 +1,5 @@
-## A modified version of the original resonant Raman script by Michael Lamparski (see link below). 
-## This version includes functionality to save the calculated force constants for later post-processing.
+# A modified version of the original resonant Raman script by Michael Lamparski (see link below). 
+This version includes functionality to save the calculated force constants for later post-processing.
 
 # gpaw-raman-script
 
